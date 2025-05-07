@@ -9,27 +9,27 @@ PostgreSQL 取代 Redis 當 CacheServer？
 ## 插入資料場景
 
 k6 測試結果
-![](/images/insert_benchmark.bmp)
+![](/images/insert_benchmark.png)
 
 PostgreSQL 監控
-![](/images/insert_pg_monitor.bmp)
+![](/images/insert_pg_monitor.png)
 
 Redis 監控
-![](/images/insert_redis_monitor.bmp)
+![](/images/insert_redis_monitor.png)
 
 PostgreSQL table 大小
-![](/images/pg_table_size.bmp)
+![](/images/pg_table_size.png)
 
 ## 查詢資料場景
 
 k6 測試結果
-![](/images/query_benchmark.bmp)
+![](/images/query_benchmark.png)
 
 PostgreSQL 監控
-![](/images/query_pg_monitor.bmp)
+![](/images/query_pg_monitor.png)
 
 Redis 監控
-![](/images/query_redis_monitor.bmp)
+![](/images/query_redis_monitor.png)
 
 # 心得想法
 

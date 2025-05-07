@@ -1,0 +1,66 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\milan\\source\\repos\\business\\youtube-projects\\new_videos\\289 - Postgres Cache\\after\\Postgres.Caching\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{793D2EC0-32E3-066C-8823-0ACCACAA5698}|Postgres.Caching\\Postgres.Caching.csproj|c:\\users\\milan\\source\\repos\\business\\youtube-projects\\new_videos\\289 - postgres cache\\after\\postgres.caching\\postgres.caching\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{793D2EC0-32E3-066C-8823-0ACCACAA5698}|Postgres.Caching\\Postgres.Caching.csproj|solutionrelative:postgres.caching\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77AD043D-1BE7-45A8-A738-6FAA1DD947D7}|Postgres.Caching.AppHost\\Postgres.Caching.AppHost.csproj|c:\\users\\milan\\source\\repos\\business\\youtube-projects\\new_videos\\289 - postgres cache\\after\\postgres.caching\\postgres.caching.apphost\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77AD043D-1BE7-45A8-A738-6FAA1DD947D7}|Postgres.Caching.AppHost\\Postgres.Caching.AppHost.csproj|solutionrelative:postgres.caching.apphost\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\milan\\source\\repos\\business\\youtube-projects\\new_videos\\289 - Postgres Cache\\after\\Postgres.Caching\\Postgres.Caching\\Program.cs",
+              "RelativeDocumentMoniker": "Postgres.Caching\\Program.cs",
+              "ToolTip": "C:\\Users\\milan\\source\\repos\\business\\youtube-projects\\new_videos\\289 - Postgres Cache\\after\\Postgres.Caching\\Postgres.Caching\\Program.cs",
+              "RelativeToolTip": "Postgres.Caching\\Program.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAADwvz8AAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T08:29:55.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\milan\\source\\repos\\business\\youtube-projects\\new_videos\\289 - Postgres Cache\\after\\Postgres.Caching\\Postgres.Caching.AppHost\\Program.cs",
+              "RelativeDocumentMoniker": "Postgres.Caching.AppHost\\Program.cs",
+              "ToolTip": "C:\\Users\\milan\\source\\repos\\business\\youtube-projects\\new_videos\\289 - Postgres Cache\\after\\Postgres.Caching\\Postgres.Caching.AppHost\\Program.cs",
+              "RelativeToolTip": "Postgres.Caching.AppHost\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-19T07:47:29.222Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

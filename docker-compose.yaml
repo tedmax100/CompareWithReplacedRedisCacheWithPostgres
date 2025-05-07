@@ -1,0 +1,124 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__redis=valkey:6379,abortConnect=false
+      - ConnectionStrings__caching-db=Host=postgres;Port=5432;Database=caching-db;Username=postgres;Password=postgrespassword
+    depends_on:
+      postgres:
+        condition: service_healthy
+      valkey:
+        condition: service_healthy
+    restart: on-failure
+    command: >
+      /bin/bash -c "
+        echo 'Waiting for PostgreSQL to be ready...'
+        sleep 5
+        dotnet Postgres.Caching.dll
+      "
+
+  postgres:
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgrespassword
+      - POSTGRES_DB=caching-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: always
+
+  valkey:
+    image: valkey/valkey:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - valkey-data:/data
+    command: valkey-server --save 60 1 --loglevel warning
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: always
+    
+  redis-exporter:
+    image: oliver006/redis_exporter:latest
+    ports:
+      - "9121:9121"
+    environment:
+      - REDIS_ADDR=valkey:6379
+      - REDIS_EXPORTER_LOG_FORMAT=json
+    depends_on:
+      - valkey
+    restart: always
+
+  postgres-exporter:
+    image: quay.io/prometheuscommunity/postgres-exporter:latest
+    ports:
+      - "9187:9187"
+    environment:
+      - DATA_SOURCE_NAME=postgresql://postgres:postgrespassword@postgres:5432/caching-db?sslmode=disable
+      - PG_EXPORTER_DISABLE_DEFAULT_METRICS=false
+      - PG_EXPORTER_DISABLE_SETTINGS_METRICS=false
+    volumes:
+      - ./postgres_exporter.yml:/postgres_exporter.yml
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: always
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9091:9090" 
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    depends_on:
+      - redis-exporter
+      - postgres-exporter
+    restart: always
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    depends_on:
+      - prometheus
+    restart: always
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  valkey-data:
+  prometheus-data:
+  grafana-data:
